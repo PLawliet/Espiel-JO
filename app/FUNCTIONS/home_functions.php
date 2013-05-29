@@ -2,15 +2,15 @@
 
 	include 'db_con.php';
 
-	class home_functions extends database_connection{
+	class home_functions extends database_connection {
 
-		function add_user($firstname, $middlename, $lastname, $username, $address, $age, $gender, $new_email, $new_password, $retyped_password){
+		function add_user($firstname, $middlename, $lastname, $username, $address, $age, $gender, $new_email, $new_password){
 			$this -> open_connection();
 
 			$log = "out";
-            $money = "0";
+            $money = 0;
 
-            $stmt = $this->dbh->prepare("INSERT INTO users (firstname, middlename, lastname, username, address, age, gender, email, password, log, money) VALUES(null, ?, ?, ?, ?, ?, ?, ?, ?, password(?), ?, ?, ?)");
+            $stmt = $this->dbh->prepare("INSERT INTO users (user_id, firstname, middlename, lastname, username, address, age, gender, email, password, log, money) VALUES(null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             $stmt->bindParam (1, $firstname);
             $stmt->bindParam (2, $middlename);
             $stmt->bindParam (3, $lastname);
@@ -20,9 +20,8 @@
             $stmt->bindParam (7, $gender);
             $stmt->bindParam (8, $new_email);
             $stmt->bindParam (9, $new_password);
-            $stmt->bindParam (10, $retyped_password);
-            $stmt->bindParam (11, $log);
-            $stmt->bindParam (12, $money);
+            $stmt->bindParam (10, $log);
+            $stmt->bindParam (11, $money);
             $stmt->execute();
 
 			$this -> close_connection();

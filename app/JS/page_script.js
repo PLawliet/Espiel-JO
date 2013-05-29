@@ -2,28 +2,30 @@ $(document).ready(function(){
 
 	$("#add_user_button").click(function(){
 
+        var retyped_password = $("#retyped_password").val();
+        var objects = {
+            "firstname":$("input[name='firstname']").val(),
+            "middlename":$("input[name='middlename']").val(),
+            "lastname":$("input[name='lastname']").val(),
+            "username":$("input[name='username']").val(),
+            "address":$("input[name='address']").val(),
+            "age":$("input[name='age']").val(),
+            "gender":$("input[name='gender']").val(),
+            "new_email":$("input[name='new_email']").val(),
+            "new_password":$("input[name='new_password']").val()
+        };
 
-		//if(firstname != "" && middlename != "" && lastname != "" && username != "" && address != "" && age != "" && gender != "" && new_email != "" && new_password != "" && new_password == retyped_password){
-            alert('if');
+		if(objects.firstname != "" && objects.middlename != "" && objects.lastname != "" && objects.username != "" && objects.address != "" && objects.age != "" && objects.gender != "" && objects.new_email != "" && objects.new_password != "" && objects.new_password == retyped_password){
+            alert('sakob 8 $("#add_user_button").click(function(){});');
 
-            var objects = {
-                "firstname":$("input[name='firstname']").val(),
-                "middlename":$("input[name='middlename']").val(),
-                "lastname":$("input[name='lastname']").val(),
-                "username":$("input[name='username']").val(),
-                "address":$("input[name='address']").val(),
-                "age":$("input[name='age']").val(),
-                "gender":$("input[name='gender']").val(),
-                "new_email":$("input[name='new_email']").val(),
-                "new_password":$("input[name='new_password']").val()
-            };
-        alert("bbb");
+
+
             $.ajax({
 				type: "POST",
 				url: "PHP/USERS/add_user.php",
 				data: objects,
-				success: function() {
-                    alert('ooo');
+				success: function(data) {
+                    alert('success: '+data);/*
 					$("#email_span").html(new_email);
 					$("#confirmation_div").dialog({
 						show: "drop",
@@ -34,17 +36,18 @@ $(document).ready(function(){
 								$(this).dialog("close");
 							}
 						}
-					});
+					});*/
 				},
 				error: function(data){
-					console.log("error in adding new user" + JSON.stringify(data));
+                    alert('error: '+data);
+					/*console.log("error in adding new user" + JSON.stringify(data));*/
 				}
 			});
 
-      //  }else {
-			//$("#registration_invalid").show();
-			//$("#registration_invalid").fadeOut(7000);
-		//}
+       }else {
+			$("#registration_invalid").show();
+			$("#registration_invalid").fadeOut(7000);
+		}
 	});
 
 	$.ajax({

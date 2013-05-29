@@ -47,7 +47,7 @@
           	    </tr>
           	    <tr>
         		    <td>Gender:</td>
-           		    <td><input type = "radio" id= "female" name ="gender"/>Female<input type = "radio" id= "male" name ="gender"/>Male</td>
+           		    <td><input type = "radio" id= "female" name ="gender" value="female"/>Female<input type = "radio" id= "male" name ="gender" value="male"/>Male</td>
           	    </tr>
           	    <tr>
             	    <td>E-mail:</td>
